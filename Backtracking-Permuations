@@ -5,3 +5,7 @@
 # 24/04/23 -> No edits
 # 27/04/23 -> No edits
 # 28/04/23 -> No edits
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        result = []
