@@ -2,3 +2,5 @@
 
 # Example: Input: s = "leetcode", wordDict = ["leet","code"] -> Output: true -> Explanation: Return true because "leetcode" can be segmented as "leet code".
 
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
