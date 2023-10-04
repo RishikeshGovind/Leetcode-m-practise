@@ -17,3 +17,6 @@
 #        [3,1] -> [4,1] -> Atlantic Ocean
 # [4,0]: [4,0] -> Pacific Ocean 
 #        [4,0] -> Atlantic Ocean
+
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
