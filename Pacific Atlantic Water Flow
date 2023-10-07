@@ -20,4 +20,40 @@
 
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-# No edits
+        m,n=len(heights),len(heights[0])
+        pacific=[[0 for j in range(n)] for i in range(m)]
+        atlantic=[[0 for j in range(n)] for i in range(m)]
+        q1=deque()
+        q2=deque()
+        for i in range(m):
+            if pacific[i][n-1]==0:
+                pacific[i][n-1]=1
+                q1.append((i,n-1))
+            if atlantic[i][0]==0:
+                atlantic[i][0]=1
+                q2.append((i,0))
+        for i in range(n):
+            if pacific[m-1][i]==0:
+                pacific[m-1][i]=1
+                q1.append((m-1,i))
+            if atlantic[0][i]==0:
+                atlantic[0][i]=1
+                q2.append((0,i))
+        while q1:
+            i,j=q1.popleft()
+            for r,c in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
+                if 0<=r<m and 0<=c<n and pacific[r][c]==0 and heights[i][j]<=heights[r][c]:
+                    pacific[r][c]=1
+                    q1.append((r,c))
+        while q2:
+            i,j=q2.popleft()
+            for r,c in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
+                if 0<=r<m and 0<=c<n and atlantic[r][c]==0 and heights[i][j]<=heights[r][c]:
+                    atlantic[r][c]=1
+                    q2.append((r,c))
+        ans=[]
+        for i in range(m):
+            for j in range(n):
+                if pacific[i][j] and atlantic[i][j]:
+                    ans.append([i,j])
+        return ans 
