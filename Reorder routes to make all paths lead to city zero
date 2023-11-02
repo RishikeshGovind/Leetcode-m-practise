@@ -7,3 +7,11 @@ class Solution:
 
        edges = { (a,b) for a,b in connections} 
        neighbors = { city:[] for city in range(n)}
+       visit = set()
+       changes = 0
+
+       for a,b in connections:
+           neighbors[a].append(b)
+           neighbors[b].append(a)
+
+        def dfs(city): 
