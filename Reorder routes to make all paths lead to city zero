@@ -14,4 +14,16 @@ class Solution:
            neighbors[a].append(b)
            neighbors[b].append(a)
 
-        def dfs(city): 
+       def dfs(city):
+            nonlocal edges, neighbors, visit, changes
+
+            for neighbor in neighbors[city]:
+                if neighbor in visit:
+                    continue
+                if (neighbor, city) not in edges:
+                    changes += 1
+                visit.add(neighbor)
+                dfs(neighbor)
+       visit.add(0)
+       dfs(0)
+       return changes
